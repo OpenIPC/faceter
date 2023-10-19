@@ -1,0 +1,68 @@
+{
+    "rtspMainUrl": "rtsp://root:C2XdZUxr@127.0.0.1/stream=0",
+    "rtspSubUrl": "rtsp://root:C2XdZUxr@127.0.0.1/stream=1",
+    "useProductionApi": true,
+    "cameraModel": "Faceter",
+    "firmwareSaveDir": "/tmp",
+    "endpointPort": 7654,
+
+    "cameraConfig": {
+        "audio" : {
+            "micEnabled": true,
+            "codecName": "aac",
+            "sampleRate": 8000,
+            "speakerEnabled": true
+        },
+
+        "mainStream": {
+            "isEnabled": true,
+            "codecName": "h264",
+            "framerate": 0,
+            "width": 0,
+            "height": 0,
+            "bitrate": 0,
+            "keyInterval": 0
+        },
+
+        "subStream": {
+            "isEnabled": true,
+            "codecName": "h264",
+            "framerate": 0,
+            "width": 0,
+            "height": 0,
+            "bitrate": 0,
+            "keyInterval": 0
+        },
+
+        "image": {
+            "isFlip": false,
+            "isMirror": false
+        },
+
+        "detector": {
+            "isEnabled": true
+        },
+
+        "osd": {
+            "isEnabled": false
+        },
+
+        "nightMode": {
+            "isEnabled": true
+        }
+    },
+
+    "customConfig": {
+        "resetButtonPin": 0,
+        "resetButtonPinInverted": false,
+        "redLedPin": 0,
+        "greenLedPin": 0,
+        "nightLedPin": 0,
+        "irCutPin1": 58,
+        "irCutPin2": 57,
+        "irSensorPin": 0,
+        "irSensorPinInverted": false,
+        "blockCount": 2,
+        "webEnabled": true
+    }
+}
