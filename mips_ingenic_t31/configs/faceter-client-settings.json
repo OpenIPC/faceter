@@ -57,7 +57,7 @@
         "resetButtonPinInverted": false,
         "redLedPin": 0,
         "greenLedPin": 0,
-        "nightLedPin": 0,
+        "nightLedPin": 49,
         "irCutPin1": 58,
         "irCutPin2": 57,
         "irSensorPin": 0,
