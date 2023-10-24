@@ -62,7 +62,8 @@
         "irCutPin2": 57,
         "irSensorPin": 0,
         "irSensorPinInverted": false,
-        "blockCount": 2,
-        "webEnabled": true
+        "blockCount": 0,
+        "webEnabled": true,
+        "webStatic": "/var/www/majestic"
     }
 }
