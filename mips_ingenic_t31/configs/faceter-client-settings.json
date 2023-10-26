@@ -10,7 +10,7 @@
         "audio" : {
             "micEnabled": true,
             "codecName": "aac",
-            "sampleRate": 8000,
+            "sampleRate": 16000,
             "speakerEnabled": true
         },
 
