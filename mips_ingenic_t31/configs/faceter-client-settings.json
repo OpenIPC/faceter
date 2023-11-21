@@ -4,7 +4,10 @@
     "useProductionApi": true,
     "cameraModel": "Faceter",
     "firmwareSaveDir": "/tmp",
+    "resourcesDir": "/opt/faceter-camera",
     "endpointPort": 7654,
+    "discoveryPort": 3702,
+    "certFilePath": "/etc/ssl/certs/ca-certificates.crt",
 
     "cameraConfig": {
         "audio" : {
