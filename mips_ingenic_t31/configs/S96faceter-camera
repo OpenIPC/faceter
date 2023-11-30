@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DAEMON="faceter-camera"
+DAEMON="faceter-camera.sh"
 PIDFILE="/var/run/$DAEMON.pid"
 
 DAEMON_ARGS=""
