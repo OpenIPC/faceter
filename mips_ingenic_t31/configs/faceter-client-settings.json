@@ -8,6 +8,7 @@
     "endpointPort": 7654,
     "discoveryPort": 3702,
     "certFilePath": "/etc/ssl/certs/ca-certificates.crt",
+    "confFilePath": "/etc/faceter-camera.conf",
 
     "cameraConfig": {
         "audio" : {
@@ -56,7 +57,7 @@
     },
 
     "customConfig": {
-        "resetButtonPin": 0,
+        "resetButtonPin": 11,
         "resetButtonPinInverted": false,
         "redLedPin": 0,
         "greenLedPin": 0,
