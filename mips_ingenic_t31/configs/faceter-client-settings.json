@@ -58,7 +58,7 @@
 
     "customConfig": {
         "resetButtonPin": 11,
-        "resetButtonPinInverted": false,
+        "resetButtonPinInverted": true,
         "redLedPin": 0,
         "greenLedPin": 0,
         "nightLedPin": 49,
