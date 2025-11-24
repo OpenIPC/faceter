@@ -10,7 +10,7 @@ Integration with the Faceter project. The stack is split into lightweight daemon
 
 ### Purpose
 
-`faceter-detector` is a standalone utility for OpenIPC/Entware cameras. It listens to `majestic` motion messages via `logread`, pulls JPEG snapshots from the local HTTP endpoint (no RTSP/RTMP stream decoding), crops motion-driven ROIs, and runs them through a TensorFlow Lite Micro person model. The utility emits PERSON/MOTION events in ISO-8601 format and can optionally persist the evidence images.
+`faceter-detector` is a standalone utility for OpenIPC cameras. It listens to `majestic` motion messages via `logread`, pulls JPEG snapshots from the local HTTP endpoint (no RTSP/RTMP stream decoding), crops motion-driven ROIs, and runs them through a TensorFlow Lite Micro person model. The utility emits PERSON/MOTION events in ISO-8601 format and can optionally persist the evidence images.
 
 ### Key capabilities
 
