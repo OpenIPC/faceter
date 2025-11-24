@@ -101,6 +101,7 @@ All detections in this gallery were captured outdoors. We keep daytime captures 
 ![Day detection #1](docs/detector-gallery/2025-11-22_09-27-11.353_roi96x96_290_0_prob0.991_rect.jpg)
 ![Day detection #2](docs/detector-gallery/2025-11-22_11-58-31.142_roi96x96_369_46_prob0.989_rect.jpg)
 ![Day detection #3](docs/detector-gallery/2025-11-24_08-02-39.565_roi96x96_396_35_prob0.969_rect.jpg)
+
 **Night scenes**
 
 ![Night detection #1](docs/detector-gallery/2025-11-21_23-38-39.742_roi96x96_356_0_prob0.689_rect.jpg)
