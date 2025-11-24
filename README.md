@@ -1,6 +1,8 @@
 # Faceter
 
-Integration with the Faceter project. The stack is split into lightweight daemons that can be deployed independently on OpenIPC cameras.
+Integration with the Faceter project. 
+
+The stack is split into lightweight daemons that can be deployed independently on OpenIPC cameras.
 
 ## faceter-agent
 
