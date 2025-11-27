@@ -14,6 +14,8 @@ The stack is split into lightweight daemons that can be deployed independently o
 
 `faceter-detector` is a standalone utility for OpenIPC cameras. It listens to `majestic` motion messages via `logread`, pulls JPEG snapshots from the local HTTP endpoint (no RTSP/RTMP stream decoding), crops motion-driven ROIs, and runs them through a TensorFlow Lite Micro person model. The utility emits PERSON/MOTION events in ISO-8601 format and can optionally persist the evidence images.
 
+**No events are emitted unless motion detection stays enabled inside `majestic`, so turn it on before launching the detector.**
+
 Our MobileNetV1 α=0.25 backbone has been retrained on a cleaned COCO subset plus real camera captures, reaching 0.85 accuracy / 0.855 precision at 96×96—significantly higher than the MLCommons VWW baseline (≈0.82–0.84 accuracy, ≈0.78–0.80 precision). The resulting binary runs comfortably on ARMv7 via TFLite Micro, consuming roughly 300 KB of RAM, so nighttime outdoor scenes now stay reliable.
 
 ### Key capabilities
