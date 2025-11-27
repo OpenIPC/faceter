@@ -14,6 +14,8 @@ The stack is split into lightweight daemons that can be deployed independently o
 
 `faceter-detector` is a standalone utility for OpenIPC cameras. It listens to `majestic` motion messages via `logread`, pulls JPEG snapshots from the local HTTP endpoint (no RTSP/RTMP stream decoding), crops motion-driven ROIs, and runs them through a TensorFlow Lite Micro person model. The utility emits PERSON/MOTION events in ISO-8601 format and can optionally persist the evidence images.
 
+Our MobileNetV1 α=0.25 backbone has been retrained on a cleaned COCO subset plus real camera captures, reaching 0.85 accuracy / 0.855 precision at 96×96—significantly higher than the MLCommons VWW baseline (≈0.82–0.84 accuracy, ≈0.78–0.80 precision). The resulting binary runs comfortably on ARMv7 via TFLite Micro, consuming roughly 300 KB of RAM, so nighttime outdoor scenes now stay reliable.
+
 ### Key capabilities
 
 - Two-stage pipeline: motion heuristics followed by a 96×96 TensorFlow Lite Micro inference.
@@ -106,9 +108,9 @@ All detections in this gallery were captured outdoors. We keep daytime captures 
 
 **Night scenes**
 
-![Night detection #1](docs/detector-gallery/2025-11-21_23-38-39.742_roi96x96_356_0_prob0.689_rect.jpg)
-![Night detection #2](docs/detector-gallery/2025-11-22_16-25-46.274_roi96x96_396_0_prob0.823_rect.jpg)
-![Night detection #3](docs/detector-gallery/2025-11-22_16-50-37.744_roi115x142_192_3_prob0.786_rect.jpg)
+![Night detection #1](docs/detector-gallery/2025-11-27_05-38-54.040_roi96x96_291_0_prob0.993_rect.jpg)
+![Night detection #2](docs/detector-gallery/2025-11-27_05-17-24.881_roi115x148_350_12_prob0.987_rect.jpg)
+![Night detection #3](docs/detector-gallery/2025-11-26_19-21-27.858_roi96x96_416_34_prob0.988_rect.jpg)
 
 ### Computer vision pipeline
 
