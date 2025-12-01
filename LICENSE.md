@@ -1,6 +1,6 @@
 # The Prosperity Public License 3.0.0
 
-Contributor: OpenIPC (c) 2025
+Contributor: Faceter (c) 2025
 
 ## Purpose
 
