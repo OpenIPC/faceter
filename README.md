@@ -94,11 +94,12 @@ For MOTION rows the reported confidence is the exponentially-compressed value, w
 ![Day detection #1](docs/detector-gallery/2025-11-22_09-27-11.353_roi96x96_290_0_prob0.991_rect.jpg)
 ![Day detection #2](docs/detector-gallery/2025-11-22_11-58-31.142_roi96x96_369_46_prob0.989_rect.jpg)
 ![Day detection #3](docs/detector-gallery/2025-11-24_08-02-39.565_roi96x96_396_35_prob0.969_rect.jpg)
+
 **Night scenes**
 
-![Night detection #1](docs/detector-gallery/2025-11-21_23-38-39.742_roi96x96_356_0_prob0.689_rect.jpg)
-![Night detection #2](docs/detector-gallery/2025-11-22_16-25-46.274_roi96x96_396_0_prob0.823_rect.jpg)
-![Night detection #3](docs/detector-gallery/2025-11-22_16-50-37.744_roi115x142_192_3_prob0.786_rect.jpg)
+![Night detection #1](docs/detector-gallery/2025-11-27_05-38-54.040_roi96x96_291_0_prob0.993_rect.jpg)
+![Night detection #2](docs/detector-gallery/2025-11-27_05-17-24.881_roi115x148_350_12_prob0.987_rect.jpg)
+![Night detection #3](docs/detector-gallery/2025-11-26_19-21-27.858_roi96x96_416_34_prob0.988_rect.jpg)
 
 ### Computer vision pipeline
 
