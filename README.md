@@ -10,13 +10,13 @@ Integration with the Faceter project. The stack is split into lightweight daemon
 
 ### Purpose
 
-`faceter-detector` is a standalone utility for OpenIPC cameras. It pulls the local MJPEG preview stream, decodes frames to estimate motion volume, crops motion-driven ROIs, and runs them through a TensorFlow Lite Micro person model. The utility emits PERSON/MOTION events in ISO-8601 format and can optionally persist the evidence images.
+`faceter-detector` is a standalone utility for OpenIPC cameras. It pulls the local MJPEG preview stream, decodes frames to estimate motion volume, crops motion-driven ROIs, and runs them through a TVM AOT–compiled person model. The utility emits PERSON/MOTION events in ISO-8601 format and can optionally persist the evidence images.
 
 Any HTTP MJPEG streamer is supported—just point `--stream-url` to the feed you want to analyze, whether it is served by the camera firmware or an external encoder. For best results, use a 16:9 aspect ratio stream at 512×288 resolution and 5 fps. Both width and height should be multiples of 16 for optimal processing efficiency. Higher resolutions or frame rates may overload the CPU.
 
 ### Key capabilities
 
-- Two-stage pipeline: motion heuristics followed by a 96×96 TensorFlow Lite Micro inference.
+- Two-stage pipeline: motion heuristics followed by a 96×96 TVM AOT inference.
 - Adjustable thresholds, ROI export, and resolution-adaptive processing.
 - Snapshot annotation (`--snapshot-rect`) and per-event labeling to aid triage.
 - Motion-only mode (`--disable-person-detector`) for slow devices.
@@ -34,7 +34,6 @@ ssh root@camera '/usr/bin/faceter-detector \
   --stream-url http://root:12345@127.0.0.1/mjpeg \
   --snapshot-path /tmp/faceter-detector/snapshot'
 ```
-
 
 ### Automation example
 
@@ -133,10 +132,10 @@ The detector uses a multi-stage ROI builder before inference:
 - **Static ROI filter:** ROIs with <4 px displacement, <0.25 probability, and <2 % motion volume are considered static background and ignored.
 - **Motion mask intersection:** indoor mode intersects the binary motion mask with the background-subtraction mask to filter shadows and flicker.
 
-At this point every candidate ROI is normalized and pushed into the on-device person classifier. The model is a lightweight 96×96 RGB CNN distilled from the Visual Wake Words family and kept in float32 form, so probability thresholds map 1:1 to the logits we log. TensorFlow Lite Micro embeds the interpreter, operator kernels, and static tensor arena directly into the binary, so no runtime filesystem access is required—the detector simply provides the arena buffer and invokes the single-person detection graph on each ROI.
+At this point every candidate ROI is normalized and pushed into the on-device person classifier. The model is a lightweight 96×96 RGB CNN distilled from the Visual Wake Words family and kept in float32 form. The detector now uses a TVM AOT–compiled model: the generated C module is statically linked, requires no interpreter, and exposes a single entrypoint function that the detector invokes directly for each ROI.
 
 ### Optimizations
-- TensorFlow Lite Micro kernels now ship with custom NEON paths for float Conv2D, depthwise 3×3, FullyConnected, and Average/Max Pool.
+- TVM AOT replaces TensorFlow Lite Micro, removing the interpreter and reducing RAM usage.
 - NEON SIMD paths cover RGB conversion, frame differencing, morphological closing, and model input normalization. The detector auto-detects NEON and falls back to scalar code otherwise.
 
 ### Debugging & operational tips
