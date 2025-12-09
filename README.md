@@ -4,7 +4,36 @@ Integration with the Faceter project. The stack is split into lightweight daemon
 
 ## faceter-agent
 
-`faceter-agent` is the Faceter cloud integration utility—coming soon.
+faceter-agent is a service for IP cameras that connects devices to the Faceter platform.
+
+## Main Functions
+- Registers the camera on the platform.
+- Exchanges telemetry.
+- Sends events:
+  - motion detection,
+  - person detection.
+- Configures video streams (RTSP/MJPEG), snapshots, and detector parameters.
+- Runs on OpenIPC firmware.
+- Communicates with the Faceter Cloud over secure channels.
+
+## Configuration and Resources
+- Main configuration file:
+  `/etc/faceter-agent.conf`
+- Device resources:
+  `/usr/share/faceter`
+- The firmware includes certificates and feature flags required for operation.
+- Starts the main service by default; `-v` prints the current version.
+- Distributed with an overlay package containing production-ready configs and assets.
+
+## Runtime Dependencies (on the camera)
+- OpenIPC firmware with Majestic service and `cli` utility.
+- `fw_printenv` and `ipcinfo` tools.
+- Init scripts `/etc/init.d/S95majestic`.
+- BusyBox utilities (`pidof`, `reboot`, `sync`, glob support).
+- Access to `/etc/faceter-agent.conf`, `/usr/share/faceter`, temporary and storage paths.
+- Network access to Faceter Cloud (MQTT/HTTPS/RTSP).
+- Valid NTP time sync.
+
 
 ## faceter-detector
 
@@ -25,7 +54,6 @@ Any HTTP MJPEG streamer is supported—just point `--stream-url` to the feed you
 
 ### Runtime dependencies
 - Local MJPEG stream endpoint (default `http://127.0.0.1/mjpeg`).
-- `libcurl.so` 4.x (the binary dlopens it under the names `libcurl.so.4.7.0`, `libcurl.so.4`, or `libcurl.so`; some vendors label it `lbicurl`).
 
 ### Quick start
 
@@ -52,10 +80,9 @@ Because the detector writes each snapshot before printing the PERSON line, the s
   --stream-url URL               MJPEG stream URL (default http://root:12345@127.0.0.1/mjpeg).
   --person-thr FLOAT             PERSON probability threshold. Defaults: indoor 0.55, outdoor 0.40.
   --motion-thr FLOAT             MOTION confidence threshold after exp-filter (default 0.5).
-  --motion-fps-decode FLOAT      Decode cadence for motion detection, 0.2–15 fps (default 5).
-  --motion-debug BOOL            Verbose motion logging (default false).
+  --motion-fps-decode FLOAT      Decode cadence for motion detection, clamped to 0.2–15 fps (default 5).
   --snapshot-path DIR            Snapshot directory (default /tmp/faceter-detector/snapshot).
-  --snapshot-count INT           Number of snapshots to keep (default 4, newest retained).
+  --snapshot-count INT           Number of snapshots to keep (default 10, min 1, newest retained).
   --snapshot-rect BOOL           Draw PERSON rectangles on saved snapshots (default true).
   --snapshot-rect-probe BOOL     Draw probability labels near the bounding box (default false).
   --snapshot-motion BOOL         Persist MOTION snapshots (default false).
@@ -64,7 +91,10 @@ Because the detector writes each snapshot before printing the PERSON line, the s
   --scene indoor|outdoor         Scene preset affecting filters and defaults (default indoor).
   --debug                        Verbose logging to stderr.
   --debug-roi-logic              Print blob selection diagnostics.
+  --motion-debug                 Extra motion heatmap logging.
 ```
+
+Boolean flags accept `true/false`, `yes/no`, or `1/0`.
 
 All PERSON/MOTION rectangles (`rect=x,y,w,h`) are normalized to a notional 100×100 frame, so downstream systems can treat them as percentage-style coordinates regardless of the camera resolution.
 
@@ -144,5 +174,3 @@ At this point every candidate ROI is normalized and pushed into the on-device pe
 - `--motion-debug` dumps per-frame motion volume, bounding boxes, and cooldown state.
 - `--debug-roi-logic` prints why blobs were accepted or rejected.
 - `--debug-save-img` is ideal for collecting ROI datasets for further model training.
-- If `libcurl` cannot be initialized the process exits immediately, so watch dmesg for startup errors.
-
