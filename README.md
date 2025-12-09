@@ -26,10 +26,8 @@ faceter-agent is a service for IP cameras that connects devices to the Faceter p
 - Distributed with an overlay package containing production-ready configs and assets.
 
 ### Runtime Dependencies (on the camera)
-- OpenIPC firmware with Majestic service and `cli` utility.
-- `fw_printenv` and `ipcinfo` tools.
+- OpenIPC firmware with Majestic service.
 - Init scripts `/etc/init.d/S95majestic`.
-- BusyBox utilities (`pidof`, `reboot`, `sync`, glob support).
 - Access to `/etc/faceter-agent.conf`, `/usr/share/faceter`, temporary and storage paths.
 - Network access to Faceter Cloud (MQTT/HTTPS/RTSP).
 - Valid NTP time sync.
