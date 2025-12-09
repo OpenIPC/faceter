@@ -6,7 +6,7 @@ Integration with the Faceter project. The stack is split into lightweight daemon
 
 faceter-agent is a service for IP cameras that connects devices to the Faceter platform.
 
-## Main Functions
+### Main Functions
 - Registers the camera on the platform.
 - Exchanges telemetry.
 - Sends events:
@@ -16,7 +16,7 @@ faceter-agent is a service for IP cameras that connects devices to the Faceter p
 - Runs on OpenIPC firmware.
 - Communicates with the Faceter Cloud over secure channels.
 
-## Configuration and Resources
+### Configuration and Resources
 - Main configuration file:
   `/etc/faceter-agent.conf`
 - Device resources:
@@ -25,7 +25,7 @@ faceter-agent is a service for IP cameras that connects devices to the Faceter p
 - Starts the main service by default; `-v` prints the current version.
 - Distributed with an overlay package containing production-ready configs and assets.
 
-## Runtime Dependencies (on the camera)
+### Runtime Dependencies (on the camera)
 - OpenIPC firmware with Majestic service and `cli` utility.
 - `fw_printenv` and `ipcinfo` tools.
 - Init scripts `/etc/init.d/S95majestic`.
@@ -34,7 +34,7 @@ faceter-agent is a service for IP cameras that connects devices to the Faceter p
 - Network access to Faceter Cloud (MQTT/HTTPS/RTSP).
 - Valid NTP time sync.
 
-**Mobile app screenshots**
+### Mobile App Screenshots
 
 ![screen #1](docs/agent-gallery/android-app.jpg)
 
