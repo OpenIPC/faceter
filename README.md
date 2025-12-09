@@ -35,9 +35,9 @@ faceter-agent is a service for IP cameras that connects devices to the Faceter p
 - Valid NTP time sync.
 
 **Mobile app screenshots**
-![screen #1](docs/agent-gallery/2025-12-09 19.03.07.jpg)
-![screen #2](docs/agent-gallery/2025-12-09 19.05.11.jpg)
-![screen #3](docs/agent-gallery/2025-12-09 19.05.24.jpg)
+![screen #1](docs/agent-gallery/2025-12-09_19.03.07.jpg)
+![screen #2](docs/agent-gallery/2025-12-09_19.05.11.jpg)
+![screen #3](docs/agent-gallery/2025-12-09_19.05.24.jpg)
 
 
 ## faceter-detector
