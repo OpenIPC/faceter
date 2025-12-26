@@ -94,6 +94,7 @@ Because the detector writes each snapshot before printing the PERSON line, the s
   --debug                        Verbose logging to stderr.
   --debug-roi-logic              Print blob selection diagnostics.
   --motion-debug                 Extra motion heatmap logging.
+  --syslog-events                Log PERSON/PERSON_BEST_PROBE/MOTION events via syslog (logread).
 ```
 
 Boolean flags accept `true/false`, `yes/no`, or `1/0`.
@@ -171,6 +172,7 @@ At this point every candidate ROI is normalized and pushed into the on-device pe
 - NEON SIMD paths cover RGB conversion, frame differencing, morphological closing, and model input normalization. The detector auto-detects NEON and falls back to scalar code otherwise.
 
 ### Debugging & operational tips
+- When `--syslog-events` is enabled, all PERSON, PERSON_BEST_PROBE, and MOTION events are also sent to syslog (visible via `logread` in BusyBox).
 
 - Use `--debug` to log each pipeline stage to stderr.
 - `--motion-debug` dumps per-frame motion volume, bounding boxes, and cooldown state.
